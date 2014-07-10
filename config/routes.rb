@@ -1,5 +1,11 @@
 BulletTest::Application.routes.draw do
-  root to: "posts#index"
+
+  resources :posts, only: [:index]
+
+  resources :user, only: [] do
+    resources :posts, only: [:index], controller: :user_posts
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
