@@ -28,7 +28,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'bullet'
+  gem 'bullet', github: 'flyerhzm/bullet'
 end
 
 # To use ActiveModel has_secure_password
