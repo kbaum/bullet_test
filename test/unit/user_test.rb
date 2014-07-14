@@ -11,13 +11,13 @@ class UserTest < ActiveSupport::TestCase
     end
 
     Bullet.start_request
-    Bullet.perform_out_of_channel_notifications if Bullet.notification?
     User.find_by_username!('josie').posts.each do |post|
       puts post.content
       post.comments.each do |comment|
         puts comment.content
       end
     end
+    Bullet.perform_out_of_channel_notifications if Bullet.notification?
     Bullet.end_request
   end
 end
