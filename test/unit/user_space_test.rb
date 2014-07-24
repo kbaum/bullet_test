@@ -10,12 +10,10 @@ class UserSpaceTest < ActiveSupport::TestCase
   end
 
   test 'this should raise an error' do
-    Bullet.unused_eager_loading_enable = false
     Bullet.start_request
-    puts "starting request ***********"
     ActiveRecord::Base.logger = Logger.new(STDOUT)
 
-    Space.includes([:user_spaces, :users ]).find_each do |space|
+    Space.includes(:users).find_each do |space|
       space.user_spaces.each do |user_space|
         puts user_space.role
       end
